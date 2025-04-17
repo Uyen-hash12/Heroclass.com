@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về chúng tôi - Hero Class</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card {
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="hero-section text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-graduation-cap text-4xl mr-4"></i>
+                        <h1 class="text-3xl font-bold">Hero Class</h1>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#features" class="text-white hover:text-gray-200">Tính năng</a>
+                    <a href="courses.html" class="text-white hover:text-gray-200">Khóa học</a>
+                    <a href="about.html" class="text-white hover:text-gray-200">Về chúng tôi</a>
+                    <a href="index.html#contact" class="text-white hover:text-gray-200">Liên hệ</a>
+                </nav>
+                <div class="flex space-x-4">
+                    <button onclick="showLoginModal()" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100">
+                        Đăng nhập
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-indigo-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-900">
+                        Đăng ký
+                    </button>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <h2 class="text-5xl font-bold mb-6">Về Hero Class</h2>
+                <p class="text-xl mb-8">Nền tảng học tập trực tuyến hàng đầu Việt Nam</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mission Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Sứ mệnh của chúng tôi</h2>
+                    <p class="text-gray-600 mb-4">Hero Class được thành lập với sứ mệnh mang đến nền tảng học tập trực tuyến chất lượng cao, giúp học sinh Việt Nam tiếp cận với phương pháp giáo dục hiện đại và hiệu quả.</p>
+                    <p class="text-gray-600 mb-4">Chúng tôi tin rằng mỗi học sinh đều có tiềm năng trở thành người hùng của chính mình, và chúng tôi sẽ đồng hành cùng các em trên hành trình khám phá tri thức.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Giá trị cốt lõi</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-lightbulb text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Sáng tạo</h4>
+                                <p class="text-gray-600">Phương pháp giảng dạy đổi mới</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-heart text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Tận tâm</h4>
+                                <p class="text-gray-600">Đồng hành cùng học sinh</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-star text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Chất lượng</h4>
+                                <p class="text-gray-600">Cam kết chất lượng đào tạo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Đội ngũ của chúng tôi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Giáo viên" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Nguyễn Văn A</h3>
+                    <p class="text-gray-600 mb-2">Giáo viên Toán</p>
+                    <p class="text-gray-600">Thạc sĩ Toán học, 10 năm kinh nghiệm giảng dạy</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Giáo viên" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Trần Thị B</h3>
+                    <p class="text-gray-600 mb-2">Giáo viên Tiếng Anh</p>
+                    <p class="text-gray-600">Cử nhân Ngôn ngữ Anh, 8 năm kinh nghiệm giảng dạy</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Giáo viên" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Lê Văn C</h3>
+                    <p class="text-gray-600 mb-2">Giáo viên Lập trình</p>
+                    <p class="text-gray-600">Kỹ sư phần mềm, 5 năm kinh nghiệm giảng dạy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Thành tựu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">100+</div>
+                    <div class="text-gray-600">Khóa học</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">50+</div>
+                    <div class="text-gray-600">Giáo viên</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">1000+</div>
+                    <div class="text-gray-600">Học sinh</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">95%</div>
+                    <div class="text-gray-600">Hài lòng</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hero Class</h3>
+                    <p class="text-gray-400">Nền tảng học tập trực tuyến hàng đầu Việt Nam</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Liên kết</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#features" class="text-gray-400 hover:text-white">Tính năng</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Khóa học</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Về chúng tôi</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white">Trung tâm trợ giúp</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">Câu hỏi thường gặp</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Điều khoản sử dụng</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Theo dõi chúng tôi</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Hero Class. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Modal functions
+        function showLoginModal() {
+            window.location.href = 'index.html#login';
+        }
+
+        function showRegisterModal() {
+            window.location.href = 'index.html#register';
+        }
+    </script>
+</body>
+</html> 

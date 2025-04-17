@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu hỏi thường gặp - Hero Class</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card {
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="hero-section text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-graduation-cap text-4xl mr-4"></i>
+                        <h1 class="text-3xl font-bold">Hero Class</h1>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#features" class="text-white hover:text-gray-200">Tính năng</a>
+                    <a href="courses.html" class="text-white hover:text-gray-200">Khóa học</a>
+                    <a href="about.html" class="text-white hover:text-gray-200">Về chúng tôi</a>
+                    <a href="index.html#contact" class="text-white hover:text-gray-200">Liên hệ</a>
+                </nav>
+                <div class="flex space-x-4">
+                    <button onclick="showLoginModal()" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100">
+                        Đăng nhập
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-indigo-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-900">
+                        Đăng ký
+                    </button>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <h2 class="text-5xl font-bold mb-6">Câu hỏi thường gặp</h2>
+                <p class="text-xl mb-8">Tìm câu trả lời cho những câu hỏi phổ biến</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Tìm kiếm câu hỏi..." 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button class="absolute right-4 top-3 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Tài khoản</h3>
+                    <p class="text-gray-600 mb-4">Câu hỏi về đăng ký, đăng nhập và quản lý tài khoản</p>
+                    <a href="#account" class="text-blue-600 hover:text-blue-800">Xem câu hỏi →</a>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Khóa học</h3>
+                    <p class="text-gray-600 mb-4">Câu hỏi về đăng ký và tham gia khóa học</p>
+                    <a href="#courses" class="text-green-600 hover:text-green-800">Xem câu hỏi →</a>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-credit-card text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Thanh toán</h3>
+                    <p class="text-gray-600 mb-4">Câu hỏi về thanh toán và hoàn tiền</p>
+                    <a href="#payment" class="text-purple-600 hover:text-purple-800">Xem câu hỏi →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account FAQ -->
+    <section id="account" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Tài khoản</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Làm thế nào để đăng ký tài khoản?</h3>
+                    <p class="text-gray-600">Bạn có thể đăng ký tài khoản bằng cách nhấn vào nút "Đăng ký" ở góc trên bên phải của trang web và điền đầy đủ thông tin theo hướng dẫn.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Tôi quên mật khẩu thì phải làm sao?</h3>
+                    <p class="text-gray-600">Bạn có thể nhấn vào "Quên mật khẩu" ở trang đăng nhập và làm theo hướng dẫn để đặt lại mật khẩu mới.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Làm thế nào để thay đổi thông tin cá nhân?</h3>
+                    <p class="text-gray-600">Sau khi đăng nhập, bạn có thể vào phần "Cài đặt tài khoản" để cập nhật thông tin cá nhân.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses FAQ -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Khóa học</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Làm thế nào để đăng ký khóa học?</h3>
+                    <p class="text-gray-600">Bạn có thể đăng ký khóa học bằng cách chọn khóa học mong muốn và nhấn vào nút "Đăng ký ngay".</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Tôi có thể học lại bài giảng không?</h3>
+                    <p class="text-gray-600">Có, bạn có thể xem lại bài giảng bất cứ lúc nào trong thời gian khóa học còn hiệu lực.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Làm thế nào để nhận chứng chỉ?</h3>
+                    <p class="text-gray-600">Sau khi hoàn thành khóa học và đạt yêu cầu, bạn sẽ nhận được chứng chỉ điện tử qua email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment FAQ -->
+    <section id="payment" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Thanh toán</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Tôi có thể thanh toán bằng những phương thức nào?</h3>
+                    <p class="text-gray-600">Chúng tôi chấp nhận thanh toán qua thẻ ngân hàng, ví điện tử và chuyển khoản trực tiếp.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Làm thế nào để hoàn tiền?</h3>
+                    <p class="text-gray-600">Bạn có thể yêu cầu hoàn tiền trong vòng 7 ngày kể từ ngày đăng ký nếu chưa bắt đầu học.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Tôi có thể thanh toán trả góp không?</h3>
+                    <p class="text-gray-600">Có, chúng tôi hỗ trợ thanh toán trả góp qua thẻ tín dụng với lãi suất 0%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Vẫn còn thắc mắc?</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-gray-600 mb-8">Nếu bạn không tìm thấy câu trả lời cho câu hỏi của mình, hãy liên hệ với chúng tôi</p>
+                <a href="help.html" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                    Liên hệ hỗ trợ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hero Class</h3>
+                    <p class="text-gray-400">Nền tảng học tập trực tuyến hàng đầu Việt Nam</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Liên kết</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#features" class="text-gray-400 hover:text-white">Tính năng</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Khóa học</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Về chúng tôi</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white">Trung tâm trợ giúp</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">Câu hỏi thường gặp</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Điều khoản sử dụng</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Theo dõi chúng tôi</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Hero Class. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Modal functions
+        function showLoginModal() {
+            window.location.href = 'index.html#login';
+        }
+
+        function showRegisterModal() {
+            window.location.href = 'index.html#register';
+        }
+    </script>
+</body>
+</html> 

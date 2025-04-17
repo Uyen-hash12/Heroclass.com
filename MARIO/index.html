@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Class - Nền tảng giáo dục tiểu học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Hero Class Logo" class="h-12 w-12">
+                    <span class="ml-4 text-2xl font-bold text-blue-600">Hero Class</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-blue-600">Tính năng</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600">Về chúng tôi</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600">Liên hệ</a>
+                    <a href="help.html" class="text-gray-700 hover:text-blue-600">Trợ giúp</a>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="openLoginModal()" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50">Đăng nhập</button>
+                    <button onclick="openRegisterModal()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Đăng ký</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6">Học tập thông minh, Phát triển toàn diện</h1>
+            <p class="text-xl mb-8">Nền tảng giáo dục trực tuyến hàng đầu cho học sinh tiểu học</p>
+            <a href="courses.html" class="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100">Khám phá khóa học</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Khóa học chất lượng cao</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <i class="fas fa-calculator text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Toán học</h3>
+                    <p class="text-gray-600">Phát triển tư duy logic và kỹ năng giải quyết vấn đề thông qua các bài tập thực hành</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <i class="fas fa-book text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Tiếng Việt</h3>
+                    <p class="text-gray-600">Rèn luyện kỹ năng đọc, viết và giao tiếp hiệu quả</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <i class="fas fa-heart text-4xl text-yellow-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Đạo Đức</h3>
+                    <p class="text-gray-600">Giáo dục nhân cách và kỹ năng sống cho học sinh tiểu học</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <i class="fas fa-globe text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Tự nhiên và Xã hội</h3>
+                    <p class="text-gray-600">Khám phá thế giới tự nhiên và xã hội xung quanh</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <i class="fas fa-language text-4xl text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Tiếng Anh</h3>
+                    <p class="text-gray-600">Làm quen và phát triển 4 kỹ năng nghe, nói, đọc, viết</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Về chúng tôi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Sứ mệnh của chúng tôi</h3>
+                    <p class="text-gray-600 mb-6">Cung cấp nền tảng giáo dục trực tuyến chất lượng cao, giúp học sinh tiểu học phát triển toàn diện.</p>
+                    <a href="about.html" class="text-blue-600 hover:text-blue-800">Tìm hiểu thêm →</a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-3xl font-bold text-blue-600">100+</p>
+                        <p class="text-gray-600">Khóa học</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-3xl font-bold text-blue-600">50+</p>
+                        <p class="text-gray-600">Giáo viên</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-3xl font-bold text-blue-600">1000+</p>
+                        <p class="text-gray-600">Học sinh</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-3xl font-bold text-blue-600">95%</p>
+                        <p class="text-gray-600">Hài lòng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Liên hệ với chúng tôi</h2>
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Họ và tên</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Tiêu đề</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Nội dung</label>
+                        <textarea class="w-full px-4 py-2 border rounded-md h-32"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hero Class</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-400">Trang chủ</a></li>
+                        <li><a href="courses.html" class="hover:text-blue-400">Khóa học</a></li>
+                        <li><a href="about.html" class="hover:text-blue-400">Về chúng tôi</a></li>
+                        <li><a href="#contact" class="hover:text-blue-400">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Dashboard</h3>
+                    <ul class="space-y-2">
+                        <li><a href="admin-dashboard.html" class="hover:text-blue-400">Admin</a></li>
+                        <li><a href="teacher-dashboard.html" class="hover:text-blue-400">Giáo viên</a></li>
+                        <li><a href="student-dashboard.html" class="hover:text-blue-400">Học sinh</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hỗ trợ</h3>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="hover:text-blue-400">Trợ giúp</a></li>
+                        <li><a href="faq.html" class="hover:text-blue-400">FAQ</a></li>
+                        <li><a href="terms.html" class="hover:text-blue-400">Điều khoản</a></li>
+                        <li><a href="privacy.html" class="hover:text-blue-400">Bảo mật</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Liên hệ</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i> info@heroclass.edu.vn</li>
+                        <li><i class="fas fa-phone mr-2"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Hà Nội, Việt Nam</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2024 Hero Class. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Đăng nhập</h2>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Mật khẩu</label>
+                    <input type="password" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Đăng nhập</button>
+                <div class="text-center">
+                    <button type="button" class="text-blue-600 hover:text-blue-800" onclick="openRegisterModal()">Đăng ký tài khoản mới</button>
+                </div>
+            </form>
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Đăng ký</h2>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Họ và tên</label>
+                    <input type="text" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Mật khẩu</label>
+                    <input type="password" class="w-full px-4 py-2 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Vai trò</label>
+                    <select class="w-full px-4 py-2 border rounded-md">
+                        <option value="student">Học sinh</option>
+                        <option value="teacher">Giáo viên</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Đăng ký</button>
+                <div class="text-center">
+                    <button type="button" class="text-blue-600 hover:text-blue-800" onclick="openLoginModal()">Đã có tài khoản? Đăng nhập</button>
+                </div>
+            </form>
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function openRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+            closeLoginModal();
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                closeLoginModal();
+            }
+            if (event.target == document.getElementById('registerModal')) {
+                closeRegisterModal();
+            }
+        }
+    </script>
+</body>
+</html> 

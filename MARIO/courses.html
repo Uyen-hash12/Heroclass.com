@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học - Hero Class</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card {
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="hero-section text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-graduation-cap text-4xl mr-4"></i>
+                        <h1 class="text-3xl font-bold">Hero Class</h1>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#features" class="text-white hover:text-gray-200">Tính năng</a>
+                    <a href="courses.html" class="text-white hover:text-gray-200">Khóa học</a>
+                    <a href="index.html#about" class="text-white hover:text-gray-200">Về chúng tôi</a>
+                    <a href="index.html#contact" class="text-white hover:text-gray-200">Liên hệ</a>
+                </nav>
+                <div class="flex space-x-4">
+                    <button onclick="showLoginModal()" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100">
+                        Đăng nhập
+                    </button>
+                    <button onclick="showRegisterModal()" class="bg-indigo-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-900">
+                        Đăng ký
+                    </button>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <h2 class="text-5xl font-bold mb-6">Khóa học chất lượng cao</h2>
+                <p class="text-xl mb-8">Khám phá các khóa học được thiết kế bởi đội ngũ giáo viên hàng đầu</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Math Course Section -->
+    <section id="math" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Toán học</h2>
+                    <p class="text-gray-600 mb-4">Khóa học Toán học được thiết kế để phát triển tư duy logic và kỹ năng giải quyết vấn đề cho học sinh.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Phương pháp giảng dạy hiện đại</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Bài tập thực hành phong phú</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Hỗ trợ 1-1 từ giáo viên</span>
+                        </li>
+                    </ul>
+                    <a href="index.html#contact" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                        Đăng ký ngay
+                    </a>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Nội dung khóa học</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-600 font-semibold">1</span>
+                            </div>
+                            <span>Đại số cơ bản</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-600 font-semibold">2</span>
+                            </div>
+                            <span>Hình học</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-600 font-semibold">3</span>
+                            </div>
+                            <span>Giải tích</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- English Course Section -->
+    <section id="english" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-bold mb-4">Tiếng Anh</h2>
+                    <p class="text-gray-600 mb-4">Khóa học Tiếng Anh giúp học sinh phát triển toàn diện 4 kỹ năng: Nghe, Nói, Đọc, Viết.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Giáo viên bản ngữ</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Lớp học tương tác</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Thực hành giao tiếp</span>
+                        </li>
+                    </ul>
+                    <a href="index.html#contact" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                        Đăng ký ngay
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 bg-white p-8 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Nội dung khóa học</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-green-600 font-semibold">1</span>
+                            </div>
+                            <span>Ngữ pháp cơ bản</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-green-600 font-semibold">2</span>
+                            </div>
+                            <span>Giao tiếp thực tế</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-green-600 font-semibold">3</span>
+                            </div>
+                            <span>Luyện thi chứng chỉ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Course Section -->
+    <section id="programming" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Lập trình</h2>
+                    <p class="text-gray-600 mb-4">Khóa học Lập trình giúp học sinh phát triển tư duy logic và kỹ năng lập trình từ cơ bản đến nâng cao.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Học qua dự án thực tế</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Mentor hỗ trợ 24/7</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Thực tập tại doanh nghiệp</span>
+                        </li>
+                    </ul>
+                    <a href="index.html#contact" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                        Đăng ký ngay
+                    </a>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Nội dung khóa học</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-purple-600 font-semibold">1</span>
+                            </div>
+                            <span>Lập trình cơ bản</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-purple-600 font-semibold">2</span>
+                            </div>
+                            <span>Phát triển web</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-purple-600 font-semibold">3</span>
+                            </div>
+                            <span>Dự án thực tế</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hero Class</h3>
+                    <p class="text-gray-400">Nền tảng học tập trực tuyến hàng đầu Việt Nam</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Liên kết</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#features" class="text-gray-400 hover:text-white">Tính năng</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Khóa học</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">Về chúng tôi</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white">Trung tâm trợ giúp</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">Câu hỏi thường gặp</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Điều khoản sử dụng</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Theo dõi chúng tôi</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Hero Class. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Modal functions
+        function showLoginModal() {
+            window.location.href = 'index.html#login';
+        }
+
+        function showRegisterModal() {
+            window.location.href = 'index.html#register';
+        }
+    </script>
+</body>
+</html> 

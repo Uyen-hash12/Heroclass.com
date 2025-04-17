@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Class - Hệ thống Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .chat-container {
+            height: calc(100vh - 4rem);
+        }
+        .chat-sidebar {
+            width: 300px;
+            border-right: 1px solid #e2e8f0;
+        }
+        .chat-main {
+            flex: 1;
+        }
+        .message-container {
+            height: calc(100% - 4rem);
+            overflow-y: auto;
+        }
+        .message {
+            max-width: 70%;
+        }
+        .message.sent {
+            margin-left: auto;
+        }
+        .message.received {
+            margin-right: auto;
+        }
+        .typing-indicator {
+            display: none;
+        }
+        .typing-indicator.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="chat-sidebar bg-white">
+            <div class="p-4 border-b">
+                <h1 class="text-xl font-bold text-indigo-600">Hero Class Chat</h1>
+            </div>
+            
+            <!-- Chat Type Selection -->
+            <div class="p-4 border-b">
+                <div class="flex space-x-2">
+                    <button onclick="switchChatType('one-to-one')" class="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                        <i class="fas fa-user mr-2"></i> Chat 1-1
+                    </button>
+                    <button onclick="switchChatType('group')" class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                        <i class="fas fa-users mr-2"></i> Nhóm
+                    </button>
+                    <button onclick="switchChatType('ai')" class="flex-1 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700">
+                        <i class="fas fa-robot mr-2"></i> AI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat List -->
+            <div class="p-4">
+                <div id="chatList" class="space-y-2">
+                    <!-- Chat items will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-main flex flex-col">
+            <!-- Chat Header -->
+            <div class="p-4 bg-white border-b flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img id="chatAvatar" src="https://via.placeholder.com/40" alt="Avatar" class="w-10 h-10 rounded-full">
+                    <div>
+                        <h2 id="chatTitle" class="font-semibold">Chọn cuộc trò chuyện</h2>
+                        <p id="chatSubtitle" class="text-sm text-gray-500">Bắt đầu trò chuyện</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="message-container p-4 bg-gray-50">
+                <div id="messages" class="space-y-4">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+                <div class="typing-indicator flex items-center space-x-2 mt-4">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="p-4 bg-white border-t">
+                <div class="flex items-center space-x-2">
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <input type="text" id="messageInput" placeholder="Nhập tin nhắn..." class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-600">
+                    <button onclick="sendMessage()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Upload Modal -->
+    <div id="fileUploadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white p-8 rounded-lg w-full max-w-md">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Tải lên tệp</h2>
+                    <button class="text-gray-500 hover:text-gray-700" onclick="closeFileUploadModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-gray-600 mb-2">Kéo thả tệp vào đây hoặc</p>
+                        <label class="bg-indigo-600 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-indigo-700">
+                            <input type="file" class="hidden" id="fileInput" multiple>
+                            Chọn tệp
+                        </label>
+                        <p class="text-sm text-gray-500 mt-2">Hỗ trợ: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT, ZIP, RAR, JPG, PNG, GIF</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button onclick="uploadFile()" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">
+                        Tải lên
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Chat state
+        let currentChatType = 'one-to-one';
+        let currentChatId = null;
+        let currentUserId = null;
+
+        // Initialize chat
+        function initChat() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    currentUserId = user.uid;
+                    loadChatList();
+                } else {
+                    window.location.href = 'index.html';
+                }
+            });
+        }
+
+        // Switch chat type
+        function switchChatType(type) {
+            currentChatType = type;
+            document.querySelectorAll('.chat-sidebar button').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'bg-green-600', 'bg-yellow-600');
+                btn.classList.add('bg-gray-600');
+            });
+            document.querySelector(`button[onclick="switchChatType('${type}')"]`).classList.remove('bg-gray-600');
+            document.querySelector(`button[onclick="switchChatType('${type}')"]`).classList.add(
+                type === 'one-to-one' ? 'bg-indigo-600' :
+                type === 'group' ? 'bg-green-600' : 'bg-yellow-600'
+            );
+            loadChatList();
+        }
+
+        // Load chat list
+        function loadChatList() {
+            const chatList = document.getElementById('chatList');
+            chatList.innerHTML = '';
+
+            if (currentChatType === 'one-to-one') {
+                // Load 1-1 chats
+                firebase.firestore().collection('chats')
+                    .where('type', '==', 'one-to-one')
+                    .where('participants', 'array-contains', currentUserId)
+                    .get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            const chat = doc.data();
+                            const otherParticipant = chat.participants.find(p => p !== currentUserId);
+                            
+                            // Get user info
+                            firebase.firestore().collection('users').doc(otherParticipant).get()
+                                .then((userDoc) => {
+                                    const user = userDoc.data();
+                                    addChatItem(doc.id, user.name, user.role, chat.lastMessage);
+                                });
+                        });
+                    });
+            } else if (currentChatType === 'group') {
+                // Load group chats
+                firebase.firestore().collection('chats')
+                    .where('type', '==', 'group')
+                    .where('participants', 'array-contains', currentUserId)
+                    .get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            const chat = doc.data();
+                            addChatItem(doc.id, chat.name, 'group', chat.lastMessage);
+                        });
+                    });
+            } else {
+                // AI chat
+                addChatItem('ai', 'Trợ lý AI', 'ai', 'Xin chào! Tôi có thể giúp gì cho bạn?');
+            }
+        }
+
+        // Add chat item to list
+        function addChatItem(id, name, type, lastMessage) {
+            const chatList = document.getElementById('chatList');
+            const chatItem = document.createElement('div');
+            chatItem.className = 'flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer';
+            chatItem.onclick = () => openChat(id, name, type);
+            
+            chatItem.innerHTML = `
+                <img src="https://via.placeholder.com/40" alt="Avatar" class="w-10 h-10 rounded-full">
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-semibold">${name}</h3>
+                        <span class="text-xs text-gray-500">12:30</span>
+                    </div>
+                    <p class="text-sm text-gray-500 truncate">${lastMessage || ''}</p>
+                </div>
+            `;
+            
+            chatList.appendChild(chatItem);
+        }
+
+        // Open chat
+        function openChat(id, name, type) {
+            currentChatId = id;
+            document.getElementById('chatTitle').textContent = name;
+            document.getElementById('chatSubtitle').textContent = type === 'ai' ? 'Trợ lý AI' : type;
+            loadMessages();
+        }
+
+        // Load messages
+        function loadMessages() {
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = '';
+
+            if (currentChatType === 'ai') {
+                // AI chat messages
+                const messages = [
+                    { text: 'Xin chào! Tôi có thể giúp gì cho bạn?', sender: 'ai', timestamp: new Date() }
+                ];
+                displayMessages(messages);
+            } else {
+                // Load messages from Firestore
+                firebase.firestore().collection('messages')
+                    .where('chatId', '==', currentChatId)
+                    .orderBy('timestamp', 'asc')
+                    .get()
+                    .then((querySnapshot) => {
+                        const messages = [];
+                        querySnapshot.forEach((doc) => {
+                            messages.push(doc.data());
+                        });
+                        displayMessages(messages);
+                    });
+            }
+        }
+
+        // Display messages
+        function displayMessages(messages) {
+            const messagesContainer = document.getElementById('messages');
+            messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${message.sender === currentUserId ? 'sent' : 'received'}`;
+                
+                messageDiv.innerHTML = `
+                    <div class="flex items-end space-x-2">
+                        <img src="https://via.placeholder.com/30" alt="Avatar" class="w-8 h-8 rounded-full">
+                        <div class="bg-white p-3 rounded-lg shadow">
+                            <p class="text-sm">${message.text}</p>
+                            <span class="text-xs text-gray-500">${formatTime(message.timestamp)}</span>
+                        </div>
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+            });
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Send message
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                if (currentChatType === 'ai') {
+                    // Handle AI chat
+                    handleAIChat(text);
+                } else {
+                    // Save message to Firestore
+                    const message = {
+                        chatId: currentChatId,
+                        sender: currentUserId,
+                        text: text,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                    
+                    firebase.firestore().collection('messages').add(message)
+                        .then(() => {
+                            // Update last message in chat
+                            firebase.firestore().collection('chats').doc(currentChatId)
+                                .update({
+                                    lastMessage: text,
+                                    lastMessageTime: firebase.firestore.FieldValue.serverTimestamp()
+                                });
+                        });
+                }
+                
+                input.value = '';
+            }
+        }
+
+        // Handle AI chat
+        async function handleAIChat(text) {
+            // Show typing indicator
+            document.querySelector('.typing-indicator').classList.add('active');
+            
+            try {
+                // Call AI API (replace with your actual AI implementation)
+                const response = await fetch('YOUR_AI_API_ENDPOINT', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: text,
+                        context: 'primary_school'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // Add AI response to chat
+                const messagesContainer = document.getElementById('messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message received';
+                
+                messageDiv.innerHTML = `
+                    <div class="flex items-end space-x-2">
+                        <img src="https://via.placeholder.com/30" alt="AI" class="w-8 h-8 rounded-full">
+                        <div class="bg-white p-3 rounded-lg shadow">
+                            <p class="text-sm">${data.response}</p>
+                            <span class="text-xs text-gray-500">${formatTime(new Date())}</span>
+                        </div>
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            } catch (error) {
+                console.error('AI chat error:', error);
+                alert('Có lỗi xảy ra khi xử lý tin nhắn');
+            } finally {
+                // Hide typing indicator
+                document.querySelector('.typing-indicator').classList.remove('active');
+            }
+        }
+
+        // Upload file
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const files = fileInput.files;
+            
+            if (files.length > 0) {
+                Array.from(files).forEach(file => {
+                    const storageRef = firebase.storage().ref(`chat/${currentChatId}/${file.name}`);
+                    const uploadTask = storageRef.put(file);
+
+                    uploadTask.on('state_changed', 
+                        (snapshot) => {
+                            // Progress monitoring
+                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            console.log('Upload is ' + progress + '% done');
+                        },
+                        (error) => {
+                            console.error('Upload error:', error);
+                            alert('Có lỗi xảy ra khi tải lên tệp');
+                        },
+                        () => {
+                            // Upload completed
+                            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                                // Save file message to Firestore
+                                const message = {
+                                    chatId: currentChatId,
+                                    sender: currentUserId,
+                                    type: 'file',
+                                    fileUrl: downloadURL,
+                                    fileName: file.name,
+                                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                                };
+                                
+                                firebase.firestore().collection('messages').add(message);
+                                closeFileUploadModal();
+                            });
+                        }
+                    );
+                });
+            }
+        }
+
+        // Helper functions
+        function formatTime(timestamp) {
+            const date = timestamp.toDate();
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function openFileUploadModal() {
+            document.getElementById('fileUploadModal').classList.remove('hidden');
+        }
+
+        function closeFileUploadModal() {
+            document.getElementById('fileUploadModal').classList.add('hidden');
+        }
+
+        // Initialize chat when page loads
+        document.addEventListener('DOMContentLoaded', initChat);
+    </script>
+</body>
+</html> 
